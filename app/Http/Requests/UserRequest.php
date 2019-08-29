@@ -28,15 +28,15 @@ class UserRequest extends FormRequest
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
         ];
     }
 
-    // public function messages()
-    // {
-    //     return [
-    //         'name.unique' => '',
-    //         'name.regex' => '',
-    //         'name.between'
-    //     ];
-    // }
+    public function messages()
+    {
+        return [
+            'avatar.mimes' => 'The avatar must be a picture in jpeg, bmp, png, gif format',
+            'avatar.dimensions' => 'Image clarity is not enough, width and height require 208px or more'
+        ];
+    }
 }
