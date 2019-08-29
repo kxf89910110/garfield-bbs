@@ -31,8 +31,8 @@
                 {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="">Personal center</a>
-              <a class="dropdown-item" href="">Edit information</a>
+              <a class="dropdown-item" href="{{ route('users.show', Auth::id()) }}">Personal center</a>
+              <a class="dropdown-item" href="{{ route('users.edit', Auth::id()) }}">Edit information</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" id="logout" href="#">
                 <form action="{{ route('logout') }}" method="POST">
