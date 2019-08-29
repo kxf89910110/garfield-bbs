@@ -8,7 +8,7 @@
 
   <div class="col-lg-3 col-md-3 hidden-sm hidden-xs user-info">
     <div class="card">
-      <img class="card-img-top" src="https://cdn.learnku.com/uploads/images/201710/30/1/TrJS40Ey5k.png" alt="{{ $user->name }}"></img>
+      <img class="card-img-top" src="{{ $user->avatar }}" alt="{{ $user->name }}"></img>
       <div class="card-body">
         <h5><strong>Personal profile</strong></h5>
         <p>{{ $user->introduction }}</p>
