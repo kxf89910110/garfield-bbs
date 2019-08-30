@@ -85,6 +85,7 @@
           connectionCount: 3,
           leaveConfirm: 'In the file upload, closing this page will cancel the upload.'
         },
+        locale: 'en-US',
         pasteImage: true,
       });
     });
