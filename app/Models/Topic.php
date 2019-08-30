@@ -44,4 +44,9 @@ class Topic extends Model
         // Sort by creation time
         return $query->orderBy('created_at', 'desc');
     }
+
+    public function link($params = [])
+    {
+        return route('topics.show', array_merge([$this->id, $this->slug], $params));
+    }
 }
