@@ -158,10 +158,10 @@ Module = (function() {
   };
 
   Module.i18n = {
-    'zh-CN': {}
+    'en-US': {}
   };
 
-  Module.locale = 'zh-CN';
+  Module.locale = 'en-US';
 
   return Module;
 

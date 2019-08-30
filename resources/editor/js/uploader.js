@@ -241,12 +241,12 @@ Uploader = (function(superClass) {
   };
 
   Uploader.i18n = {
-    'zh-CN': {
-      leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+    'en-US': {
+      leaveConfirm: 'Uploading file, cancel automatically if you leave the upload'
     }
   };
 
-  Uploader.locale = 'zh-CN';
+  Uploader.locale = 'en-US';
 
   return Uploader;
 
