@@ -32,7 +32,15 @@
     {{-- User posted content --}}
     <div class="card">
       <div class="card-body">
-        No data ~_~
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active bg-transparent" href="#">{{ $user->name }}'s topic</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">{{ $user->name }}'s reply</a>
+          </li>
+        </ul>
+        @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
       </div>
     </div>
 
