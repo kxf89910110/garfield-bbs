@@ -74,6 +74,16 @@
     $(document).ready(function() {
       var editor = new Simditor({
         textarea: $('#editor'),
+        upload: {
+          url: '{{ route('topics.upload_image') }}',
+          params: {
+            _token: '{{ csrf_token() }}'
+          },
+          fileKey: 'upload_file',
+          connectionCount: 3,
+          leaveConfirm: 'In the file upload, closing this page will cancel the upload.'
+        },
+        pasteImage: true,
       });
     });
   </script>
