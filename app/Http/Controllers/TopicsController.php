@@ -25,7 +25,7 @@ class TopicsController extends Controller
 
     public function show(Request $request, Topic $topic)
     {
-        // URL
+        // URL correction
         if ( ! empty($topic->slug) && $topic->slug != $request->slug)
         {
             return redirect($topic->link(), 301);
