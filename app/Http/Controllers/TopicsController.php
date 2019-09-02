@@ -46,7 +46,7 @@ class TopicsController extends Controller
         $topic->user_id = Auth::id();
         $topic->save();
 
-		return redirect()->to($topic->link())->with('success', 'Post created successfully!');
+		return redirect()->to($topic->link())->with('success', 'Post created successfully.');
 	}
 
 	public function edit(Topic $topic)
@@ -61,7 +61,7 @@ class TopicsController extends Controller
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
 
-		return redirect()->to($topic->link())->with('success', 'Update completed');
+		return redirect()->to($topic->link())->with('success', 'Updated successfully.');
 	}
 
 	public function destroy(Topic $topic)
@@ -69,7 +69,7 @@ class TopicsController extends Controller
 		$this->authorize('destroy', $topic);
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('success', 'Successfully deleted');
+		return redirect()->route('topics.index')->with('success', 'Deleted successfully.');
 	}
 
     public function uploadImage(Request $request, ImageUploadHandler $uploader)
@@ -77,7 +77,7 @@ class TopicsController extends Controller
         // Initialize the returned data, the default is failed
         $data = [
             'success' => false,
-            'msg' => 'Upload failed',
+            'msg' => 'Upload failed.',
             'file_path' => ''
         ];
         // Determine if there is an upload file and assign it to $file
@@ -87,7 +87,7 @@ class TopicsController extends Controller
             // If the picture is saved successfully
             if ($result) {
                 $data['file_path'] = $result['path'];
-                $data['msg'] = "Upload success";
+                $data['msg'] = "Uploaded successfully.";
                 $data['success'] = true;
             }
         }
