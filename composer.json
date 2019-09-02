@@ -18,6 +18,7 @@
         "mews/captcha": "~2.0",
         "mews/purifier": "~2.0",
         "spatie/laravel-permission": "^2.37",
+        "summerblue/administrator": "^1.2",
         "viacreative/sudo-su": "^1.1"
     },
     "require-dev": {

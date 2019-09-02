@@ -34,5 +34,10 @@ class AuthServiceProvider extends ServiceProvider
              */
             return 'App\Policies\\'.class_basename($modelClass).'Policy';
         });
+
+        \Horizon::auth(function ($request) {
+            // Is it the webmaster
+            return \Auth::user()->hasRole('Founder');
+        });
     }
 }
