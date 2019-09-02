@@ -16,7 +16,8 @@
         "laravel/horizon": "^3.3",
         "laravel/tinker": "^1.0",
         "mews/captcha": "~2.0",
-        "mews/purifier": "~2.0"
+        "mews/purifier": "~2.0",
+        "spatie/laravel-permission": "^2.37"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "~3.2",
