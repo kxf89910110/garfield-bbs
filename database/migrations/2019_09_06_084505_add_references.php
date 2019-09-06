@@ -13,21 +13,21 @@ class AddReferences extends Migration
      */
     public function up()
     {
-        Schema::table('topics', function (Blueprint $table) {
+        // Schema::table('topics', function (Blueprint $table) {
 
-            //
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
+        //     //
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        // });
 
-        Schema::table('replies', function (Blueprint $table) {
+        // Schema::table('replies', function (Blueprint $table) {
 
-            //
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        //     //
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            //
+        //     //
 
-            $table->foreign()
-        })
+        //     $table->foreign()
+        // })
     }
 
     /**
