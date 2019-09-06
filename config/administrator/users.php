@@ -4,10 +4,10 @@ use App\Models\User;
 
 return [
     // Page title
-    'title' => 'User',
+    'title' => 'Users',
 
     // Model singular, used as the page 『new $single』
-    'single' => 'User',
+    'single' => 'Users',
 
     // Data model, CRUD used as data
     'model' => User::class,

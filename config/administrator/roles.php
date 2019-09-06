@@ -3,8 +3,8 @@
     use Spatie\Permission\Models\Role;
 
     return [
-        'title'     => 'Character',
-        'single'    => 'Character',
+        'title'     => 'Characters',
+        'single'    => 'Characters',
         'model'     => Role::class,
 
         'permission'=> function()
