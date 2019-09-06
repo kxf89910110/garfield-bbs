@@ -39,7 +39,7 @@ return [
         ],
     ],
 
-    // 表单验证规则
+    // Form validation rule
     'rules' => [
         'site_name' => 'required|max:50',
         'contact_email' => 'email',

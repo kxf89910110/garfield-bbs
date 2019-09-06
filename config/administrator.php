@@ -148,7 +148,7 @@ return array(
      *
      * @type array
      */
-    'locales' => [],
+    'locales' => ['en'],
 
     // 'custom_routes_file' => app_path('Http/routes/administrator.php'),
 );
