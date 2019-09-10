@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
 
         //
-        $schedule->command('garfieldBBS:calculate-active-user')->hourly();
+        $schedule->command('larabbs:calculate-active-user')->hourly();
     }
 
     /**

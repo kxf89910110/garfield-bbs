@@ -26,3 +26,23 @@
     </div>
   </div>
 @endif
+
+@if (count($links))
+  <div class="card mt-4">
+    <div class="card-body pt-2">
+      <div class="text-center mt-1 mb-0 text-muted">
+        Resource recommendation
+      </div>
+      <hr class="mt-2 mb-3"></hr>
+      @foreach ($links as $link)
+        <a class="media mt-1" href="{{ $link->link }}">
+          <div class="meadia-body">
+            <span class="media-heading text-muted">
+              {{ $link->title }}
+            </span>
+          </div>
+        </a>
+      @endforeach
+    </div>
+  </div>
+@endif

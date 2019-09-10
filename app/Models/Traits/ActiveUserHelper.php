@@ -21,7 +21,7 @@
         protected $user_number = 6;
 
         // Cache related configuration
-        protected $cache_key = 'garfieldBBS_active_users';
+        protected $cache_key = 'larabbs_active_users';
         protected $cache_expire_in_seconds = 65 * 60;
 
         public function getActiveUsers()
