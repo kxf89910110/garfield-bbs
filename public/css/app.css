@@ -17070,7 +17070,7 @@ body {
   line-height: 38px;
 }
 
-/* Topic list */
+/* Reply list */
 
 .topic-reply a {
   color: inherit;
@@ -17095,4 +17095,3 @@ body {
 .notification-badge .badge-hint {
   background-color: #d15b47 !important;
 }
-
