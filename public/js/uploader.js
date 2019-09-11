@@ -242,7 +242,7 @@ Uploader = (function(superClass) {
 
   Uploader.i18n = {
     'en-US': {
-      leaveConfirm: 'Uploading file, cancel automatically if you leave the upload.'
+      leaveConfirm: 'Uploading file, cancel automatically if you leave the upload'
     }
   };
 
