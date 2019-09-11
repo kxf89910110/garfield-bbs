@@ -30,17 +30,25 @@
     <hr>
 
     {{-- User posted content --}}
-    <div class="card">
+    <div class="card ">
       <div class="card-body">
         <ul class="nav nav-tabs">
           <li class="nav-item">
-            <a class="nav-link active bg-transparent" href="#">{{ $user->name }}'s topic</a>
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', null)) }}" href="{{ route('users.show', $user->id) }}">
+              {{ $user->name }}'s topic
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">{{ $user->name }}'s reply</a>
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'replies')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">
+              {{ $user->name }}'s reply
+            </a>
           </li>
         </ul>
-        @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+        @if (if_query('tab', 'replies'))
+          @include('users._replies', ['replies' => $user->replies()->with('topic')->recent()->paginate(5)])
+        @else
+          @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+        @endif
       </div>
     </div>
 
