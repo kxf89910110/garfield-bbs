@@ -11,7 +11,7 @@
           {!! $reply->content !!}
         </div>
 
-        <div class="text-secondary" style="font-size: 0.9em;">
+        <div class="text-secondary" style="font-size:0.9em;">
           <i class="far fa-clock"></i> Reply to {{ $reply->created_at->diffForHumans() }}
         </div>
       </li>
@@ -19,7 +19,7 @@
   </ul>
 
 @else
-  <div class="empty-block">No data ~_~</div>
+  <div class="empty-block">No data ~_~ </div>
 @endif
 
 {{-- Pagination --}}

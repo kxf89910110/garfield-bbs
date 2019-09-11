@@ -1,9 +1,9 @@
 <ul class="list-unstyled">
   @foreach ($replies as $index => $reply)
-    <li class="media" name="reply{{ $reply->id }}" id="reply{{ $reply->id }}">
+    <li class=" media" name="reply{{ $reply->id }}" id="reply{{ $reply->id }}">
       <div class="media-left">
         <a href="{{ route('users.show', [$reply->user_id]) }}">
-          <img class="media-object img-thumbnail mr-3" alt="{{ $reply->user->name }}" src="{{ $reply->user->avatar }}" style="width: 48px;height: 48px;"></img>
+          <img class="media-object img-thumbnail mr-3" alt="{{ $reply->user->name }}" src="{{ $reply->user->avatar }}" style="width:48px;height:48px;" />
         </a>
       </div>
 
@@ -16,17 +16,11 @@
           <span class="meta text-secondary" title="{{ $reply->created_at }}">{{ $reply->created_at->diffForHumans() }}</span>
 
           {{-- Reply delete button --}}
-          @can('destroy', $reply)
-            <span class="meta float-right">
-              <form action="{{ route('replies.destroy', $reply->id) }}" onsubmit="return confirm('Are you sure you want to delete this comment?');" method="post">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-default btn-xs pull-left text-secondary">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </form>
-            </span>
-          @endcan
+          <span class="meta float-right ">
+            <a title="Delete reply">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </span>
         </div>
         <div class="reply-content text-secondary">
           {!! $reply->content !!}

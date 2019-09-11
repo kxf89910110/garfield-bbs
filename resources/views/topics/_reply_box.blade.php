@@ -7,6 +7,7 @@
     <div class="form-group">
       <textarea class="form-control" rows="3" placeholder="Share your insights~" name="content"></textarea>
     </div>
+
     <button type="submit" class="btn btn-primary btn-sm">
       <i class="fa fa-share mr-1"></i> Reply
     </button>
