@@ -12,11 +12,14 @@ class ReplyObserver
 {
     public function created(Reply $reply)
     {
-        $reply->topic->reply_count = $reply->topic->replies->count();
-        $reply->topic->save();
+        // $reply->topic->reply_count = $reply->topic->replies->count();
+        // $reply->topic->save();
+        $topic = $reply->topic;
+        $reply->topic->increment('reply_count', 1);
 
          // Notify the topic author of new comments
-        $reply->topic->user->notify(new TopicReplied($reply));
+        // $reply->topic->user->notify(new TopicReplied($reply));
+        $topic->user->topicNotify(new TopicReplied($reply));
     }
 
     public function creating(Reply $reply)

@@ -15,21 +15,29 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use Notifiable {
         notify as protected laravelNotify;
     }
-    public function notify($instance)
+    // public function notify($instance)
+    // {
+    //     // If the person to be notified is the current user, you do nor have to notify.
+    //     if ($this->id == Auth::id()) {
+    //         return;
+    //     }
+
+    //     // Only need to remind you of the database type notification,send email directly or other Pass.
+    //     if (method_exists($instance, 'toDatabase')) {
+    //         $this->increment('notification_count');
+    //     }
+
+    //     $this->laravelNotify($instance);
+    // }
+    public function topicNotify($instance)
     {
         // If the person to be notified is the current user, you do nor have to notify.
         if ($this->id == Auth::id()) {
             return;
         }
-
-        // Only need to remind you of the database type notification,send email directly or other Pass.
-        if (method_exists($instance, 'toDatabase')) {
-            $this->increment('notification_count');
-        }
-
-        $this->laravelNotify($instance);
+        $this->increment('notification_count');
+        $this->notify($instance);
     }
-
     /**
      * The attributes that are mass assignable.
      *
