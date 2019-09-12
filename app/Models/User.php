@@ -88,4 +88,28 @@ class User extends Authenticatable implements MustVerifyEmailContract
         $this->save();
         $this->unreadNotifications->markAsRead();
     }
+
+    public function setPasswordAttribute($value)
+    {
+        // If the length of the value is equal to 60, it is considered to have been encrypted.
+        if (strlen($value) != 60) {
+
+            // Not equal to 60, do password encryption processing
+            $value = bcrypt($value);
+        }
+
+        $this->attributes['password'] = $value;
+    }
+
+    public function setAvatarAttribute($path)
+    {
+        // If it is not the beginning of the 'http' substring, it is uploaded from the background and needs to complete the URL.
+        if ( ! starts_with($path, 'http')) {
+
+            // Stitching the complete URL
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+
+        $this->attributes['avatar'] = $path;
+    }
 }
