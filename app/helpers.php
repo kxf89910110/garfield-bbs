@@ -39,6 +39,12 @@ function make_excerpt($value, $length = 200)
     return str_limit($excerpt, $length);
 }
 
+function model_admin_link($title, $model)
+{
+    return model_link($title, $model, 'admin');
+}
+
+
 function model_link($title, $model, $prefix = '')
 {
     // Get the complex serpentine name of the data model
