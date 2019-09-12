@@ -6,10 +6,29 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Auth;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use Notifiable, MustVerifyEmailTrait;
+    use MustVerifyEmailTrait;
+
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
+    public function notify($instance)
+    {
+        // If the person to be notified is the current user, you do nor have to notify.
+        if ($this->id == Auth::id()) {
+            return;
+        }
+
+        // Only need to remind you of the database type notification,send email directly or other Pass.
+        if (method_exists($instance, 'toDatabase')) {
+            $this->increment('notification_count');
+        }
+
+        $this->laravelNotify($instance);
+    }
 
     /**
      * The attributes that are mass assignable.
