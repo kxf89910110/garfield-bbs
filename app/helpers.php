@@ -67,3 +67,4 @@ function model_plural_name($model)
 
     // Get the plural form of the substring, for example: pass the parameter 'user' will get 'users'
     return str_plural($snake_case_name);
+}
