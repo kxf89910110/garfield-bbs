@@ -9,8 +9,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'Garfield BBS') - Moose</title>
-  <meta name="description" content="@yield('description', 'Speak freely, do whatever you want.')" />
+  <title>@yield('title', 'Garfield BBS') -  - {{ setting('site_name', 'Moose') }}</title>
+  <meta name="description" content="@yield('description', setting('seo_description', 'Speak freely, do whatever you want.'))" />
+  <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'Young, Forum, BBS, Garfield'))" />
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 

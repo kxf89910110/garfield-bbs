@@ -5,7 +5,9 @@
     </p>
 
     <p class="float-right">
-      <a href="#">Contact me</a>
+      <a href="mailto:{{ setting('contact_email') }}">
+        Contact me
+      </a>
     </p>
   </div>
 </footer>
