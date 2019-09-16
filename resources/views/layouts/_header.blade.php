@@ -14,7 +14,14 @@
         <li class="nav-item {{ active_class(if_route('topics.index')) }}">
           <a class="nav-link" href="{{ route('topics.index') }}">Topic</a>
         </li>
-        <li class="nav-item {{ category_nav_active(1) }}">
+
+        @foreach (\App\Models\Category::all() as $value)
+          <li class="nav-item {{ category_nav_active($value->id) }}">
+            <a class="nav-link" href="{{ route('categories.show', $value->id) }}">
+              {{ $value->name }}</a>
+          </li>
+        @endforeach
+        <!-- <li class="nav-item {{ category_nav_active(1) }}">
           <a class="nav-link" href="{{ route('categories.show', 1) }}">Share</a>
         </li>
         <li class="nav-item {{ category_nav_active(2) }}">
@@ -25,7 +32,8 @@
         </li>
         <li class="nav-item {{ category_nav_active(4) }}">
           <a class="nav-link" href="{{ route('categories.show', 4) }}">Announcement</a>
-        </li>
+        </li> -->
+
       </ul>
 
       <!-- Right Side Of Navbar -->
