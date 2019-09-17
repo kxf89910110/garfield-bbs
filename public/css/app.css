@@ -16492,7 +16492,7 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
-/* universal */
+/* Universal */
 
 body {
   /* Segoe Script */
@@ -16500,7 +16500,7 @@ body {
   font-size: 14px;
 }
 
-/* header */
+/* Header */
 
 .navbar-static-top {
   border-color: #e7e7e7;
@@ -16510,7 +16510,17 @@ body {
   border-bottom: 1px solid #e8e8e8;
   border-bottom: 40px;
   margin-top: 0px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
+}
+
+/* Home Page */
+
+.home_page img {
+  position: fixed;
+  top: 66px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Sticky footer styles */
