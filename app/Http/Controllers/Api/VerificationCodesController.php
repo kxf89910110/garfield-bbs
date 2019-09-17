@@ -10,8 +10,19 @@ class VerificationCodesController extends Controller
 {
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
+        $captchaData = \Cache::get($request->captcha_key);
 
-        $phone = $request->phone;
+        if (!$captchaData) {
+            return $this->response->error('Image verification code has expired.', 422);
+        }
+
+        if (!hash_equals($captchaData['code'], $request->captcha_code)) {
+            // Clear the cache by verifying the error
+            \Cache::forget($request->captcha_key);
+            return $this->response->errorUnauthorized('Verification code error');
+        }
+
+        $phone = $captchaData['phone'];
 
         if (!app()->environment('production')) {
             $code = '1234';
@@ -45,6 +56,8 @@ class VerificationCodesController extends Controller
         $expiredAt = now()->addMinutes(10);
         // The cache verification code expires in 10 minutes.
         \Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
+        // Clear image verification code cache
+        \Cache::forget($request->captcha_key);
 
         return $this->response->array([
             'key' => $key,

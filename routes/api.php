@@ -28,4 +28,10 @@ $api->version('v1', [
         $api->post('verificationCodes', 'VerificationCodesController@store')
             ->name('api.verificationCodes.store');
         // User registration
-        $api->post('users', 'Use
+        $api->post('users', 'UsersController@store')
+            ->name('api.users.store');
+        // Picture verification code
+        $api->post('captchas', 'CaptchasController@store')
+            ->name('api.captchas.store');
+    });
+});
