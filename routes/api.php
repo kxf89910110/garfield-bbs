@@ -18,7 +18,10 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api'
 ], function($api) {
-    //
+    // SMS verification code
     $api->post('verificationCodes', 'VerificationCodesController@store')
         ->name('api.verificationCodes.store');
+    // User registration
+    $api->post('users', 'UsersController@store')
+        ->name('api.users.store');
 });
