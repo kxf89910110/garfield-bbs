@@ -229,4 +229,19 @@ return [
 
     ],
 
+    /*
+     * Interface frequency limit
+     */
+    'rate_limits' => [
+        // Access frequency limit, times / minute
+        'access' => [
+            'expires' => env('RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('RATE_LIMITS', 60),
+        ],
+        // Login related, times / minute
+        'sign' => [
+            'expires' => env('SIGN_RATE_LIMITS_EXPIRES', 1),
+            'limit' => env('SIGN_RATE_LIMITS', 10),
+        ],
+    ],
 ];

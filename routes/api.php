@@ -18,10 +18,14 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api'
 ], function($api) {
-    // SMS verification code
-    $api->post('verificationCodes', 'VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
-    // User registration
-    $api->post('users', 'UsersController@store')
-        ->name('api.users.store');
-});
+
+    $api->group([
+        'middleware' => 'api.throttle',
+        'limit' => config('api.rate_limits.sign.limit'),
+        'expires' => config('api.rate_limits.sign.expires'),
+    ], function($api) {
+        // SMS verification code
+        $api->post('verificationCodes', 'VerificationCodesController@store')
+            ->name('api.verificationCodes.store');
+        // User registration
+        $api->post('users', 'Use
