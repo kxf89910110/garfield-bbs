@@ -33,5 +33,8 @@ $api->version('v1', [
         // Picture verification code
         $api->post('captchas', 'CaptchasController@store')
             ->name('api.captchas.store');
+        // Worth mentioning
+        $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
+            ->name('api.socials.authorizations.store');
     });
 });
