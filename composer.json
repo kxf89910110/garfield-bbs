@@ -12,7 +12,6 @@
         "dingo/api": "^2.3",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
-        "gregwar/captcha": "^1.1",
         "guzzlehttp/guzzle": "~6.3",
         "hieu-le/active": "~3.5",
         "intervention/image": "^2.5",
@@ -24,6 +23,7 @@
         "overtrue/easy-sms": "^1.1",
         "overtrue/pinyin": "~3.0",
         "predis/predis": "~1.1",
+        "socialiteproviders/weixin": "^4.0",
         "spatie/laravel-permission": "^3.0",
         "summerblue/administrator": "^1.2",
         "viacreative/sudo-su": "^1.1"
