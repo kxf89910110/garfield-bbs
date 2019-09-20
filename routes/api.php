@@ -16,7 +16,8 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array'
 ], function($api) {
 
     $api->group([
@@ -45,5 +46,20 @@ $api->version('v1', [
         // Delete token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+    });
+
+    $api->group([
+        'middleware' => 'api.throttle',
+        'limit' => config('api.rate_limits.access.limit'),
+        'expires' => config('api.rate_limits.access.expires'),
+    ], function ($api) {
+        // Visitors can access the interface
+
+        // Interface that requires token verification
+        $api->group(['middleware' => 'api.auth'], function($api) {
+            // Current login user information
+            $api->get('user', 'UsersController@me')
+                ->name('api.user.show');
+        });
     });
 });
