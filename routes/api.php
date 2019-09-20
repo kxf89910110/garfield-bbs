@@ -60,6 +60,12 @@ $api->version('v1', [
             // Current login user information
             $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
+            // Edit login user information
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
+            // Image resource
+            $api->post('images', 'ImagesController@store')
+                ->name('api.images.store');
         });
     });
 });
