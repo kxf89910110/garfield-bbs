@@ -68,6 +68,10 @@ $api->version('v1', [
         // A user's reply list
         $api->get('users/{user}/replies', 'RepliesController@userIndex')
             ->name('api.users.replies.index');
+         // Resource recommendation
+        $api->get('links', 'LinksController@index')
+            ->name('api.links.index');
+
 
         // Interface that requires token verification
         $api->group(['middleware' => 'api.auth'], function($api) {
@@ -102,7 +106,7 @@ $api->version('v1', [
             // Mark message notification as read
             $api->patch('user/read/notifications', 'NotificationsController@read')
                 ->name('api.user.notifications.read');
-            //
+            // User permission list
             $api->get('user/permissions', 'PermissionsController@index')
                 ->name('api.user.permissions.index');
         });
