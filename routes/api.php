@@ -68,9 +68,12 @@ $api->version('v1', [
         // A user's reply list
         $api->get('users/{user}/replies', 'RepliesController@userIndex')
             ->name('api.users.replies.index');
-         // Resource recommendation
+        // Resource recommendation
         $api->get('links', 'LinksController@index')
             ->name('api.links.index');
+        // Active user
+        $api->get('actived/users', 'UsersController@activedIndex')
+            ->name('api.actived.users.index');
 
 
         // Interface that requires token verification
