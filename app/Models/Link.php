@@ -9,7 +9,11 @@ class Link extends Model
 {
     protected $fillable = ['title', 'link'];
 
+<<<<<<< HEAD
     public $cache_key = 'garfield-bbs_links';
+=======
+    public $cache_key = 'larabbs_links';
+>>>>>>> L03_5.8
     protected $cache_expire_in_seconds = 1440 * 60;
 
     public function getAllCached()

@@ -11,7 +11,11 @@
 
   <title>@yield('title', 'Garfield BBS') - {{ setting('site_name', 'Moose') }}</title>
   <meta name="description" content="@yield('description', setting('seo_description', 'Speak freely, do whatever you want.'))" />
+<<<<<<< HEAD
   <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'Garfield, bbs, smile-garfield'))" />
+=======
+  <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'Young, Forum, BBS, Garfield'))" />
+>>>>>>> L03_5.8
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
@@ -34,6 +38,10 @@
 
     @include('layouts._footer')
   </div>
+
+  @if (app()->isLocal())
+    @include('sudosu::user-selector')
+  @endif
 
   <!-- Scripts -->
   <script src="{{ mix('js/app.js') }}"></script>

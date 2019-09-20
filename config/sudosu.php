@@ -14,7 +14,10 @@ return [
     | .local, simply add it to the arrow below.
     |
      */
+<<<<<<< HEAD
 
+=======
+>>>>>>> L03_5.8
     // Allowed top level domain
     'allowed_tlds' => ['dev', 'local', 'test'],
 
@@ -27,7 +30,10 @@ return [
     | displayed in the select dropdown. This must be an Eloquent Model instance.
     |
      */
+<<<<<<< HEAD
 
+=======
+>>>>>>> L03_5.8
     // User model
     'user_model' => App\Models\User::class
 

@@ -5,7 +5,13 @@
     </p>
 
     <p class="float-right">
+<<<<<<< HEAD
       <a href="mailto:{{ setting('contact_email') }}">Contact me</a>
+=======
+      <a href="mailto:{{ setting('contact_email') }}">
+        Contact me
+      </a>
+>>>>>>> L03_5.8
     </p>
   </div>
 </footer>

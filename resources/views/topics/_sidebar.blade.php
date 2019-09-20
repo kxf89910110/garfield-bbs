@@ -8,11 +8,19 @@
 
 @if (count($active_users))
   <div class="card mt-4">
+<<<<<<< HEAD
     <div class="card-body active_users pt-2">
       <div class="text-center mt-1 mb-0 text-muted">
           Active user
       </div>
       <hr class="mt-2"></hr>
+=======
+    <div class="card-body active-users pt-2">
+      <div class="text-center mt-1 mb-0 text-muted">
+        Active user
+      </div>
+      <hr class="mt-2">
+>>>>>>> L03_5.8
       @foreach ($active_users as $active_user)
         <a class="media mt-2" href="{{ route('users.show', $active_user->id) }}">
           <div class="media-left media-middle mr-2 ml-1">
@@ -22,7 +30,11 @@
             <small class="media-heading text-secondary">{{ $active_user->name }}</small>
           </div>
         </a>
+<<<<<<< HEAD
         @endforeach
+=======
+      @endforeach
+>>>>>>> L03_5.8
     </div>
   </div>
 @endif
@@ -33,6 +45,7 @@
       <div class="text-center mt-1 mb-0 text-muted">
         Resource recommendation
       </div>
+<<<<<<< HEAD
       <hr class="mt-2 mb-3"></hr>
       @foreach ($links as $link)
         <a class="media mt-1" href="{{ $link->link }}">
@@ -40,6 +53,13 @@
             <span class="media-heading text-muted">
               {{ $link->title }}
             </span>
+=======
+      <hr class="mt-2 mb-3">
+      @foreach ($links as $link)
+        <a class="media mt-1" href="{{ $link->link }}">
+          <div class="media-body">
+            <span class="media-heading text-muted">{{ $link->title }}</span>
+>>>>>>> L03_5.8
           </div>
         </a>
       @endforeach

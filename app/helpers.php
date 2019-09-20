@@ -44,6 +44,10 @@ function model_admin_link($title, $model)
     return model_link($title, $model, 'admin');
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> L03_5.8
 function model_link($title, $model, $prefix = '')
 {
     // Get the complex serpentine name of the data model

@@ -12,7 +12,11 @@ class CalculateActiveUser extends Command
      *
      * @var string
      */
+<<<<<<< HEAD
     protected $signature = 'garfield-bbs:calculate-active-user';
+=======
+    protected $signature = 'larabbs:calculate-active-user';
+>>>>>>> L03_5.8
 
     /**
      * The console command description.

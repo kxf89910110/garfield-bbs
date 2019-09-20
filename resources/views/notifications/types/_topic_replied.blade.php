@@ -1,12 +1,17 @@
 <li class="media @if ( ! $loop->last) border-bottom @endif">
   <div class="media-left">
     <a href="{{ route('users.show', $notification->data['user_id']) }}">
+<<<<<<< HEAD
       <img class="media-object img-thumbnail mr-3" alt="{{ $notification->data['user_name'] }}" src="{{ $notification->data['user_avatar'] }}" style="width: 48px;height: 48px;"></img>
+=======
+      <img class="media-object img-thumbnail mr-3" alt="{{ $notification->data['user_name'] }}" src="{{ $notification->data['user_avatar'] }}" style="width:48px;height:48px;" />
+>>>>>>> L03_5.8
     </a>
   </div>
 
   <div class="media-body">
     <div class="media-heading mt-0 mb-1 text-secondary">
+<<<<<<< HEAD
       <a href="{{ route('users.show', $notification->data['user_id']) }}">
         {{ $notification->data['user_name'] }}
       </a>
@@ -14,6 +19,11 @@
       <a href="{{ $notification->data['topic_link'] }}">
         {{ $notification->data['topic_title'] }}
       </a>
+=======
+      <a href="{{ route('users.show', $notification->data['user_id']) }}">{{ $notification->data['user_name'] }}</a>
+      Commented
+      <a href="{{ $notification->data['topic_link'] }}">{{ $notification->data['topic_title'] }}</a>
+>>>>>>> L03_5.8
 
       {{-- Reply delete button --}}
       <span class="meta float-right" title="{{ $notification->created_at }}">

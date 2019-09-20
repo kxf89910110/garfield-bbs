@@ -36,7 +36,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         \Horizon::auth(function ($request) {
+<<<<<<< HEAD
             // Is it the webmaster
+=======
+            // Is it the webmaster?
+>>>>>>> L03_5.8
             return \Auth::user()->hasRole('Founder');
         });
     }

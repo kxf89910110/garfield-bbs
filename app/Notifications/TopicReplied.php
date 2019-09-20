@@ -14,6 +14,7 @@ class TopicReplied extends Notification
 
     public $reply;
 
+<<<<<<< HEAD
     /**
      * Create a new notification instance.
      *
@@ -34,13 +35,28 @@ class TopicReplied extends Notification
     public function via($notifiable)
     {
         //Channel to turn on notifications
+=======
+    public function __construct(Reply $reply)
+    {
+        // Inject the reply entity for easy use in the toDatabase method
+        $this->reply = $reply;
+    }
+
+    public function via($notifiable)
+    {
+        // Channel to turn on notifications
+>>>>>>> L03_5.8
         return ['database'];
     }
 
     public function toDatabase($notifiable)
     {
         $topic = $this->reply->topic;
+<<<<<<< HEAD
         $link = $topic->link(['#reply' . $this->reply->id]);
+=======
+        $link =  $topic->link(['#reply' . $this->reply->id]);
+>>>>>>> L03_5.8
 
         // Data stored in the database
         return [

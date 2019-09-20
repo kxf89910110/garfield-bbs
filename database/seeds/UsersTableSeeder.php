@@ -47,6 +47,7 @@ class UsersTableSeeder extends Seeder
         // Insert into the database
         User::insert($user_array);
 
+<<<<<<< HEAD
         // Initialize the user role and assign user number 1 as 'master'
         // $user = User::find(2);
         // $user->assignRole('Founder');
@@ -54,5 +55,14 @@ class UsersTableSeeder extends Seeder
         // Assign User #2 as 'Administrator'
         // $user = User::find(1);
         // $user->assignRole('Maintainer');
+=======
+        // Initiallize the user role and assign user number 1 as "master"
+        $user = User::find(1);
+        $user->assignRole('Founder');
+
+        // Assign User #2 as "Administrator"
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
+>>>>>>> L03_5.8
     }
 }

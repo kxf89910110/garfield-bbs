@@ -48,6 +48,7 @@ return array(
      *
      * @type array
      *
+<<<<<<< HEAD
      * 	array(
      *		'E-Commerce' => array('collections', 'products', 'product_images', 'orders'),
      *		'homepage_sliders',
@@ -57,6 +58,17 @@ return array(
      *		'Settings' => array('settings.site', 'settings.ecommerce', 'settings.social'),
      * 		'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
      *	)
+=======
+     *  array(
+     *      'E-Commerce' => array('collections', 'products', 'product_images', 'orders'),
+     *      'homepage_sliders',
+     *      'users',
+     *      'roles',
+     *      'colors',
+     *      'Settings' => array('settings.site', 'settings.ecommerce', 'settings.social'),
+     *      'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
+     *  )
+>>>>>>> L03_5.8
      */
     'menu' => [
         'Users and permissions' => [
@@ -82,7 +94,11 @@ return array(
      * @type closure
      */
     'permission' => function () {
+<<<<<<< HEAD
         //
+=======
+         // As long as it is a user who can manage content, it allows access to the background.
+>>>>>>> L03_5.8
         return Auth::check() && Auth::user()->can('manage_contents');
     },
 
@@ -149,7 +165,11 @@ return array(
      *
      * @type array
      */
+<<<<<<< HEAD
     'locales' => ['en'],
+=======
+    'locales' => [],
+>>>>>>> L03_5.8
 
     // 'custom_routes_file' => app_path('Http/routes/administrator.php'),
 );

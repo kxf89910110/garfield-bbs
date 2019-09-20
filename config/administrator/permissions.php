@@ -7,7 +7,11 @@
         'single'    => 'Permission',
         'model'     => Permission::class,
 
+<<<<<<< HEAD
         'Permission' => function () {
+=======
+        'permission' => function () {
+>>>>>>> L03_5.8
             return Auth::user()->can('manage_users');
         },
 

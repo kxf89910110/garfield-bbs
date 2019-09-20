@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->index()->comment('Name');
             $table->text('description')->nullable()->comment('Description');
             $table->integer('post_count')->default(0)->comment('Number of posts');
+            $table->timestamps();
         });
     }
 

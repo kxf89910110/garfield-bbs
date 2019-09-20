@@ -26,10 +26,16 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+<<<<<<< HEAD
         // Execute every other hour
         $schedule->command('garfield-bbs:calculate-active-user')->hourly();
         // Execute once every day at 0:00
         $schedule->command('garfield-bbs:sync-user-actived-at')->dailyAt('00:00');
+=======
+
+        // Execute the command of "Active User" data generation once an hour
+        $schedule->command('larabbs:calculate-active-user')->hourly();
+>>>>>>> L03_5.8
     }
 
     /**
