@@ -62,6 +62,12 @@ $api->version('v1', [
             ->name('api.topics.show');
         $api->get('users/{user}/topics', 'TopicsController@userIndex')
             ->name('api.users.topics.index');
+        // Topic reply list
+        $api->get('topics/{topic}/replies', 'RepliesController@index')
+            ->name('api.topics.replies.index');
+        // A user's reply list
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')
+            ->name('api.users.replies.index');
 
         // Interface that requires token verification
         $api->group(['middleware' => 'api.auth'], function($api) {
