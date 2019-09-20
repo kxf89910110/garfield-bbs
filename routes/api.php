@@ -99,6 +99,9 @@ $api->version('v1', [
             // Notification statistics
             $api->get('user/notifications/stats', 'NotificationsController@stats')
                 ->name('api.user.notifications.stats');
+            // Mark message notification as read
+            $api->patch('user/read/notifications', 'NotificationsController@read')
+                ->name('api.user.notifications.read');
         });
     });
 });
