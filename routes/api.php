@@ -84,6 +84,9 @@ $api->version('v1', [
             // Post reply
             $api->post('topics/{topic}/replies', 'RepliesController@store')
                 ->name('api.topics.replies.store');
+            // Delete reply
+            $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
+                ->name('api.topics.replies.destroy');
         });
     });
 });
