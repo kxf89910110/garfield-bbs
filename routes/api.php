@@ -36,5 +36,14 @@ $api->version('v1', [
         // Worth mentioning
         $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
             ->name('api.socials.authorizations.store');
+        // Sign in
+        $api->post('authorizations', 'AuthorizationsController@store')
+            ->name('api.authorizations.store');
+        // Refresh token
+        $api->put('authorizations/current', 'AuthorizationsController@update')
+            ->name('api.authorizations.update');
+        // Delete token
+        $api->delete('authorizations/current', 'AuthorizationsController@destroy')
+            ->name('api.authorizations.destroy');
     });
 });
