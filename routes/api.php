@@ -93,6 +93,9 @@ $api->version('v1', [
             // Delete reply
             $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
                 ->name('api.topics.replies.destroy');
+            // Notification list
+            $api->get('user/notifications', 'NotificationsController@index')
+                ->name('api.user.notifications.index');
         });
     });
 });
