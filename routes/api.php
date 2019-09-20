@@ -54,6 +54,8 @@ $api->version('v1', [
         'expires' => config('api.rate_limits.access.expires'),
     ], function ($api) {
         // Visitors can access the interface
+        $api->get('categories', 'CategoriesController@index')
+            ->name('api.categories.index');
 
         // Interface that requires token verification
         $api->group(['middleware' => 'api.auth'], function($api) {
