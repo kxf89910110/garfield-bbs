@@ -68,6 +68,9 @@ $api->version('v1', [
             // Image resource
             $api->post('images', 'ImagesController@store')
                 ->name('api.images.store');
+            // Post topic
+            $api->post('topics', 'TopicsController@store')
+                ->name('api.topics.store');
         });
     });
 });
