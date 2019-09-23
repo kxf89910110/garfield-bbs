@@ -66,4 +66,55 @@ class UsersController extends Controller
     {
         return $this->response->collection($user->getActiveUsers(), new UserTransformer());
     }
+
+    public function weappStore(UserRequest $request)
+    {
+        // Whether there is a corresponding key in the cache
+        $verifyData = \Cache::get($request->verification_key);
+
+        if (!$verifyData) {
+            return $this->response->error('Verification code has expired.', 422);
+        }
+
+        // Determine whether the verification code is equal, not equal to back 401 error
+        if (!hash_equals((string)$verifyData['code'], $request->verification_code)) {
+            return $this->response->errorUnauthorized('Verification code error.');
+        }
+
+        // Get WeChat's openid and session_key
+        $miniProgram = \EasyWeChat::miniProgram();
+        $data = $miniProgram->auth->session($request->code);
+
+        if (isset($data['errcode'])) {
+            return $this->response->errorUnauthorized('Code is incorrect.');
+        }
+
+        // If the user corresponding to openid already exists, error 403
+        $user = User::where('weapp_openid', $data['openid'])->first();
+
+        if ($user) {
+            return $this->response->errorForbidden('WeChat has been bound to other users, please log in directly.');
+        }
+
+        // Create user
+        $user = User::create([
+            'name' => $request->name,
+            'phone' => $verifyData['phone'],
+            'password' => bcrypt($request->password),
+            'weapp_openid' => $data['openid'],
+            'weixin_session_key' => $data['session_key'],
+        ]);
+
+        // Clear captcha cache
+        \Cache::forget($request->verification_key);
+
+        // Return Token information in meta
+        return $this->response->item($user, new UserTransformer())
+            ->setMeta([
+                'access_token' => \Auth::guard('api')->fromUser($user),
+                'token_type' => 'Bearer',
+                'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+            ])
+            ->setStatusCode(201);
+    }
 }
