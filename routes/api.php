@@ -40,6 +40,9 @@ $api->version('v1', [
         // Sign in
         $api->post('authorizations', 'AuthorizationsController@store')
             ->name('api.authorizations.store');
+        // Apple program login
+        $api->post('weapp/authorizations', 'AuthorizationsController@weappStore')
+            ->name('api.weapp.authorizations.store');
         // Refresh token
         $api->put('authorizations/current', 'AuthorizationsController@update')
             ->name('api.authorizations.update');

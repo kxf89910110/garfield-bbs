@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Api\SocialAuthorizationRequest;
 use App\Http\Requests\Api\AuthorizationRequest;
+use App\Http\Requests\Api\WeappAuthorizationRequest;
 
 class AuthorizationsController extends Controller
 {
@@ -97,5 +98,58 @@ class AuthorizationsController extends Controller
             'token_type' => 'Bearer',
             'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
         ]);
+    }
+
+    public function weappStore(WeappAuthorizationRequest $request)
+    {
+        $code = $request->code;
+
+        // Get WeChat openid and session_key according to code
+        $miniProgram = \EasyWeChat::miniProgram();
+        $data = $miniProgram->auth->session($code);
+
+        // If the result is incorrect, the code has expired or is incorrect, and a 401 error is returned.
+        if (isset($data['errcode'])) {
+            return $this->response->errorUnauthorized('Code is incorrect.');
+        }
+
+        // Find the user corresponding to openid
+        $user = User::where('weapp_openid', $data['openid'])->first();
+
+        $attributes['weixin_session_key'] = $data['session_key'];
+
+        // If the corresponding user is not found, you need to submit the username and password for user binding.
+        if (!$user) {
+            // 403 error message if username password is not submitted
+            if (!$request->username) {
+                return $this->response->errorForbidden('User does not exist.');
+            }
+
+            $username = $request->username;
+
+            // Username can be a mailbox or phone
+            filter_var($username, FILTER_VALIDATE_EMAIL) ?
+                $credentials['email'] = $username :
+                $credentials['phone'] = $username;
+
+            $credentials['password'] = $request->password;
+
+            // Verify that the username and password are correct
+            if (!Auth::guard('api')->once($credentials)) {
+                return $this->response->errorUnauthorized('Wrong user name or password.');
+            }
+
+            // Get the corresponding user
+            $user = Auth::guard('api')->getUser();
+            $attributes['weapp_openid'] = $data['openid'];
+        }
+
+        // Update user data
+        $user->update($attributes);
+
+        // Create a JWT for the corresponding user
+        $token = Auth::guard('api')->fromUser($user);
+
+        return $this->respondWithToken($token)->setStatusCode(201);
     }
 }
