@@ -135,12 +135,12 @@ class AuthorizationsController extends Controller
             $credentials['password'] = $request->password;
 
             // Verify that the username and password are correct
-            if (!Auth::guard('api')->once($credentials)) {
+            if (!\Auth::guard('api')->once($credentials)) {
                 return $this->response->errorUnauthorized('Wrong user name or password.');
             }
 
             // Get the corresponding user
-            $user = Auth::guard('api')->getUser();
+            $user = \Auth::guard('api')->getUser();
             $attributes['weapp_openid'] = $data['openid'];
         }
 
@@ -148,7 +148,7 @@ class AuthorizationsController extends Controller
         $user->update($attributes);
 
         // Create a JWT for the corresponding user
-        $token = Auth::guard('api')->fromUser($user);
+        $token = \Auth::guard('api')->fromUser($user);
 
         return $this->respondWithToken($token)->setStatusCode(201);
     }

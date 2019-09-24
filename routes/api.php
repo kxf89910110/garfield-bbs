@@ -52,6 +52,9 @@ $api->version('v1', [
         // Delete token
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
+        // User details
+         $api->get('users/{user}', 'UsersController@show')
+             ->name('api.users.show');
     });
 
     $api->group([
@@ -89,6 +92,8 @@ $api->version('v1', [
                 ->name('api.user.show');
             // Edit login user information
             $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
+            $api->put('user', 'UsersController@update')
                 ->name('api.user.update');
             // Image resource
             $api->post('images', 'ImagesController@store')
